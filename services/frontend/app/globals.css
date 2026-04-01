@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+@theme {
+  /* Site Theme Colors */
+  --color-primary: #004ac6;
+  --color-primary-foreground: #ffffff;
+  
+  /* Standard Blue Overrides for Hydration & Visibility */
+  --color-blue-50: #eff6ff;
+  --color-blue-100: #dbeafe;
+  --color-blue-600: #004ac6; /* Our Brand Blue */
+  --color-blue-700: #003ea8;
+  --color-blue-800: #003087;
+  
+  --color-background: #ffffff;
+  --color-foreground: #191c1e;
+
+  --font-manrope: "Manrope", sans-serif;
+}
+
+@layer base {
+  :root {
+    --background: 1 0 0;
+    --foreground: 0.15 0 0;
+    
+    --card: 1 0 0;
+    --card-foreground: 0.15 0 0;
+    
+    --popover: 1 0 0;
+    --popover-foreground: 0.15 0 0;
+    
+    --primary: 0.45 0.18 257.5;
+    --primary-foreground: 1 0 0;
+    
+    --secondary: 0.45 0.05 257;
+    --secondary-foreground: 1 0 0;
+    
+    --muted: 0.95 0.01 257;
+    --muted-foreground: 0.3 0.02 257;
+    
+    --accent: 0.95 0.01 257;
+    --accent-foreground: 0.45 0.18 257.5;
+    
+    --destructive: 0.5 0.2 27;
+    --destructive-foreground: 1 0 0;
+    
+    --border: 0.9 0 0;
+    --input: 0.9 0 0;
+    --ring: 0.45 0.18 257.5;
+    --radius: 0.75rem;
+  }
+
+  body {
+    background-color: white;
+    color: #191c1e;
+    font-family: "Manrope", sans-serif;
+  }
+}

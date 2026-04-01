@@ -1,0 +1,10 @@
+django>=5.0,<5.1
+django-ninja>=1.1.0
+django-cors-headers>=4.3.1
+psycopg2-binary>=2.9.9
+python-dotenv>=1.0.1
+pydantic>=2.7.0
+django-ninja-jwt>=5.3.1
+email-validator>=2.0.0
+gunicorn>=21.2.0
+dj-database-url>=2.1.0

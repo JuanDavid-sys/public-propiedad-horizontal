@@ -1,0 +1,422 @@
+[
+    {
+        "NÚMERO_PARQUEADERO": "3",
+        "APARTAMENTO": "6-302",
+        "VEHÍCULOS_PLACAS": "PLM-887",
+        "ESTADO": "Activo",
+        "OBSERVACIONES": "CARRO"
+    },
+    {
+        "NÚMERO_PARQUEADERO": "14",
+        "APARTAMENTO": "7-301",
+        "VEHÍCULOS_PLACAS": "WWR-001",
+        "ESTADO": "Activo",
+        "OBSERVACIONES": "CARRO"
+    },
+    {
+        "NÚMERO_PARQUEADERO": "25",
+        "APARTAMENTO": "5-101",
+        "VEHÍCULOS_PLACAS": "KGT-223",
+        "ESTADO": "Activo",
+        "OBSERVACIONES": "CARRO"
+    },
+    {
+        "NÚMERO_PARQUEADERO": "26",
+        "APARTAMENTO": "7-102",
+        "VEHÍCULOS_PLACAS": "BRN-990",
+        "ESTADO": "Activo",
+        "OBSERVACIONES": "CARRO"
+    },
+    {
+        "NÚMERO_PARQUEADERO": "29",
+        "APARTAMENTO": "8-502",
+        "VEHÍCULOS_PLACAS": "QAZ-112",
+        "ESTADO": "Activo",
+        "OBSERVACIONES": "CARRO"
+    },
+    {
+        "NÚMERO_PARQUEADERO": "42",
+        "APARTAMENTO": "5-201",
+        "VEHÍCULOS_PLACAS": "VBT-441",
+        "ESTADO": "Activo",
+        "OBSERVACIONES": "CARRO"
+    },
+    {
+        "NÚMERO_PARQUEADERO": "44",
+        "APARTAMENTO": "8-101",
+        "VEHÍCULOS_PLACAS": "KGT-223",
+        "ESTADO": "Activo",
+        "OBSERVACIONES": "CARRO"
+    },
+    {
+        "NÚMERO_PARQUEADERO": "46",
+        "APARTAMENTO": "2-502",
+        "VEHÍCULOS_PLACAS": "MMN-765",
+        "ESTADO": "Activo",
+        "OBSERVACIONES": "CARRO"
+    },
+    {
+        "NÚMERO_PARQUEADERO": "53",
+        "APARTAMENTO": "2-202",
+        "VEHÍCULOS_PLACAS": "KKL-090",
+        "ESTADO": "Activo",
+        "OBSERVACIONES": "CARRO"
+    },
+    {
+        "NÚMERO_PARQUEADERO": "61",
+        "APARTAMENTO": "6-201",
+        "VEHÍCULOS_PLACAS": "VBT-441",
+        "ESTADO": "Activo",
+        "OBSERVACIONES": "CARRO"
+    },
+    {
+        "NÚMERO_PARQUEADERO": "68",
+        "APARTAMENTO": "8-102",
+        "VEHÍCULOS_PLACAS": "BRN-990",
+        "ESTADO": "Activo",
+        "OBSERVACIONES": "CARRO"
+    },
+    {
+        "NÚMERO_PARQUEADERO": "73",
+        "APARTAMENTO": "5-401",
+        "VEHÍCULOS_PLACAS": "CVB-332",
+        "ESTADO": "Activo",
+        "OBSERVACIONES": "CARRO"
+    },
+    {
+        "NÚMERO_PARQUEADERO": "77",
+        "APARTAMENTO": "3-401",
+        "VEHÍCULOS_PLACAS": "CVB-332",
+        "ESTADO": "Activo",
+        "OBSERVACIONES": "CARRO"
+    },
+    {
+        "NÚMERO_PARQUEADERO": "79",
+        "APARTAMENTO": "4-502",
+        "VEHÍCULOS_PLACAS": "WSX-334",
+        "ESTADO": "Activo",
+        "OBSERVACIONES": "CARRO"
+    },
+    {
+        "NÚMERO_PARQUEADERO": "89",
+        "APARTAMENTO": "4-401",
+        "VEHÍCULOS_PLACAS": "CVB-332",
+        "ESTADO": "Activo",
+        "OBSERVACIONES": "CARRO"
+    },
+    {
+        "NÚMERO_PARQUEADERO": "98",
+        "APARTAMENTO": "4-301",
+        "VEHÍCULOS_PLACAS": "WWR-001",
+        "ESTADO": "Activo",
+        "OBSERVACIONES": "CARRO"
+    },
+    {
+        "NÚMERO_PARQUEADERO": "99",
+        "APARTAMENTO": "8-201",
+        "VEHÍCULOS_PLACAS": "VBT-441",
+        "ESTADO": "Activo",
+        "OBSERVACIONES": "CARRO"
+    },
+    {
+        "NÚMERO_PARQUEADERO": "103",
+        "APARTAMENTO": "4-102",
+        "VEHÍCULOS_PLACAS": "BRN-990",
+        "ESTADO": "Activo",
+        "OBSERVACIONES": "CARRO"
+    },
+    {
+        "NÚMERO_PARQUEADERO": "105",
+        "APARTAMENTO": "5-102",
+        "VEHÍCULOS_PLACAS": "BRN-990",
+        "ESTADO": "Activo",
+        "OBSERVACIONES": "CARRO"
+    },
+    {
+        "NÚMERO_PARQUEADERO": "111",
+        "APARTAMENTO": "8-301",
+        "VEHÍCULOS_PLACAS": "WWR-001",
+        "ESTADO": "Activo",
+        "OBSERVACIONES": "CARRO"
+    },
+    {
+        "NÚMERO_PARQUEADERO": "113",
+        "APARTAMENTO": "1-301",
+        "VEHÍCULOS_PLACAS": "VWR-112",
+        "ESTADO": "Activo",
+        "OBSERVACIONES": "CARRO"
+    },
+    {
+        "NÚMERO_PARQUEADERO": "118",
+        "APARTAMENTO": "3-502",
+        "VEHÍCULOS_PLACAS": "WSX-334",
+        "ESTADO": "Activo",
+        "OBSERVACIONES": "CARRO"
+    },
+    {
+        "NÚMERO_PARQUEADERO": "120",
+        "APARTAMENTO": "7-401",
+        "VEHÍCULOS_PLACAS": "CVB-332",
+        "ESTADO": "Activo",
+        "OBSERVACIONES": "CARRO"
+    },
+    {
+        "NÚMERO_PARQUEADERO": "134",
+        "APARTAMENTO": "7-302",
+        "VEHÍCULOS_PLACAS": "PLM-887",
+        "ESTADO": "Activo",
+        "OBSERVACIONES": "CARRO"
+    },
+    {
+        "NÚMERO_PARQUEADERO": "147",
+        "APARTAMENTO": "7-101",
+        "VEHÍCULOS_PLACAS": "KGT-223",
+        "ESTADO": "Activo",
+        "OBSERVACIONES": "CARRO"
+    },
+    {
+        "NÚMERO_PARQUEADERO": "154",
+        "APARTAMENTO": "1-501",
+        "VEHÍCULOS_PLACAS": "MNO-345",
+        "ESTADO": "Activo",
+        "OBSERVACIONES": "CARRO"
+    },
+    {
+        "NÚMERO_PARQUEADERO": "155",
+        "APARTAMENTO": "2-501",
+        "VEHÍCULOS_PLACAS": "ZZX-998",
+        "ESTADO": "Activo",
+        "OBSERVACIONES": "CARRO"
+    },
+    {
+        "NÚMERO_PARQUEADERO": "160",
+        "APARTAMENTO": "3-101",
+        "VEHÍCULOS_PLACAS": "KGT-223",
+        "ESTADO": "Activo",
+        "OBSERVACIONES": "CARRO"
+    },
+    {
+        "NÚMERO_PARQUEADERO": "164",
+        "APARTAMENTO": "3-302",
+        "VEHÍCULOS_PLACAS": "PLM-887",
+        "ESTADO": "Activo",
+        "OBSERVACIONES": "CARRO"
+    },
+    {
+        "NÚMERO_PARQUEADERO": "165",
+        "APARTAMENTO": "6-101",
+        "VEHÍCULOS_PLACAS": "KGT-223",
+        "ESTADO": "Activo",
+        "OBSERVACIONES": "CARRO"
+    },
+    {
+        "NÚMERO_PARQUEADERO": "167",
+        "APARTAMENTO": "2-101",
+        "VEHÍCULOS_PLACAS": "GHT-882",
+        "ESTADO": "Activo",
+        "OBSERVACIONES": "CARRO"
+    },
+    {
+        "NÚMERO_PARQUEADERO": "171",
+        "APARTAMENTO": "8-401",
+        "VEHÍCULOS_PLACAS": "CVB-332",
+        "ESTADO": "Activo",
+        "OBSERVACIONES": "CARRO"
+    },
+    {
+        "NÚMERO_PARQUEADERO": "176",
+        "APARTAMENTO": "8-502",
+        "VEHÍCULOS_PLACAS": "WSX-334",
+        "ESTADO": "Activo",
+        "OBSERVACIONES": "CARRO"
+    },
+    {
+        "NÚMERO_PARQUEADERO": "177",
+        "APARTAMENTO": "2-502",
+        "VEHÍCULOS_PLACAS": "OPO-112",
+        "ESTADO": "Activo",
+        "OBSERVACIONES": "CARRO"
+    },
+    {
+        "NÚMERO_PARQUEADERO": "178",
+        "APARTAMENTO": "6-301",
+        "VEHÍCULOS_PLACAS": "WWR-001",
+        "ESTADO": "Activo",
+        "OBSERVACIONES": "CARRO"
+    },
+    {
+        "NÚMERO_PARQUEADERO": "184",
+        "APARTAMENTO": "3-102",
+        "VEHÍCULOS_PLACAS": "BRN-990",
+        "ESTADO": "Activo",
+        "OBSERVACIONES": "CARRO"
+    },
+    {
+        "NÚMERO_PARQUEADERO": "228",
+        "APARTAMENTO": "2-301",
+        "VEHÍCULOS_PLACAS": "UUI-123",
+        "ESTADO": "Activo",
+        "OBSERVACIONES": "CARRO"
+    },
+    {
+        "NÚMERO_PARQUEADERO": "242",
+        "APARTAMENTO": "4-502",
+        "VEHÍCULOS_PLACAS": "QAZ-112",
+        "ESTADO": "Activo",
+        "OBSERVACIONES": "CARRO"
+    },
+    {
+        "NÚMERO_PARQUEADERO": "243",
+        "APARTAMENTO": "6-401",
+        "VEHÍCULOS_PLACAS": "CVB-332",
+        "ESTADO": "Activo",
+        "OBSERVACIONES": "CARRO"
+    },
+    {
+        "NÚMERO_PARQUEADERO": "253",
+        "APARTAMENTO": "1-502",
+        "VEHÍCULOS_PLACAS": "PQR-678",
+        "ESTADO": "Activo",
+        "OBSERVACIONES": "CARRO"
+    },
+    {
+        "NÚMERO_PARQUEADERO": "257",
+        "APARTAMENTO": "5-502",
+        "VEHÍCULOS_PLACAS": "WSX-334",
+        "ESTADO": "Activo",
+        "OBSERVACIONES": "CARRO"
+    },
+    {
+        "NÚMERO_PARQUEADERO": "264",
+        "APARTAMENTO": "5-301",
+        "VEHÍCULOS_PLACAS": "WWR-001",
+        "ESTADO": "Activo",
+        "OBSERVACIONES": "CARRO"
+    },
+    {
+        "NÚMERO_PARQUEADERO": "269",
+        "APARTAMENTO": "7-502",
+        "VEHÍCULOS_PLACAS": "QAZ-112",
+        "ESTADO": "Activo",
+        "OBSERVACIONES": "CARRO"
+    },
+    {
+        "NÚMERO_PARQUEADERO": "270",
+        "APARTAMENTO": "1-102",
+        "VEHÍCULOS_PLACAS": "STU-901",
+        "ESTADO": "Activo",
+        "OBSERVACIONES": "CARRO"
+    },
+    {
+        "NÚMERO_PARQUEADERO": "275",
+        "APARTAMENTO": "6-502",
+        "VEHÍCULOS_PLACAS": "QAZ-112",
+        "ESTADO": "Activo",
+        "OBSERVACIONES": "CARRO"
+    },
+    {
+        "NÚMERO_PARQUEADERO": "296",
+        "APARTAMENTO": "7-201",
+        "VEHÍCULOS_PLACAS": "VBT-441",
+        "ESTADO": "Activo",
+        "OBSERVACIONES": "CARRO"
+    },
+    {
+        "NÚMERO_PARQUEADERO": "303",
+        "APARTAMENTO": "3-301",
+        "VEHÍCULOS_PLACAS": "WWR-001",
+        "ESTADO": "Activo",
+        "OBSERVACIONES": "CARRO"
+    },
+    {
+        "NÚMERO_PARQUEADERO": "314",
+        "APARTAMENTO": "2-102",
+        "VEHÍCULOS_PLACAS": "BBN-455",
+        "ESTADO": "Activo",
+        "OBSERVACIONES": "CARRO"
+    },
+    {
+        "NÚMERO_PARQUEADERO": "325",
+        "APARTAMENTO": "1-202",
+        "VEHÍCULOS_PLACAS": "KLY-554",
+        "ESTADO": "Activo",
+        "OBSERVACIONES": "CARRO"
+    },
+    {
+        "NÚMERO_PARQUEADERO": "335",
+        "APARTAMENTO": "8-302",
+        "VEHÍCULOS_PLACAS": "PLM-887",
+        "ESTADO": "Activo",
+        "OBSERVACIONES": "CARRO"
+    },
+    {
+        "NÚMERO_PARQUEADERO": "336",
+        "APARTAMENTO": "4-201",
+        "VEHÍCULOS_PLACAS": "VBT-441",
+        "ESTADO": "Activo",
+        "OBSERVACIONES": "CARRO"
+    },
+    {
+        "NÚMERO_PARQUEADERO": "358",
+        "APARTAMENTO": "6-102",
+        "VEHÍCULOS_PLACAS": "BRN-990",
+        "ESTADO": "Activo",
+        "OBSERVACIONES": "CARRO"
+    },
+    {
+        "NÚMERO_PARQUEADERO": "367",
+        "APARTAMENTO": "6-502",
+        "VEHÍCULOS_PLACAS": "WSX-334",
+        "ESTADO": "Activo",
+        "OBSERVACIONES": "CARRO"
+    },
+    {
+        "NÚMERO_PARQUEADERO": "384",
+        "APARTAMENTO": "5-302",
+        "VEHÍCULOS_PLACAS": "PLM-887",
+        "ESTADO": "Activo",
+        "OBSERVACIONES": "CARRO"
+    },
+    {
+        "NÚMERO_PARQUEADERO": "385",
+        "APARTAMENTO": "3-201",
+        "VEHÍCULOS_PLACAS": "VBT-441",
+        "ESTADO": "Activo",
+        "OBSERVACIONES": "CARRO"
+    },
+    {
+        "NÚMERO_PARQUEADERO": "423",
+        "APARTAMENTO": "5-502",
+        "VEHÍCULOS_PLACAS": "QAZ-112",
+        "ESTADO": "Activo",
+        "OBSERVACIONES": "CARRO"
+    },
+    {
+        "NÚMERO_PARQUEADERO": "433",
+        "APARTAMENTO": "3-502",
+        "VEHÍCULOS_PLACAS": "QAZ-112",
+        "ESTADO": "Activo",
+        "OBSERVACIONES": "CARRO"
+    },
+    {
+        "NÚMERO_PARQUEADERO": "456",
+        "APARTAMENTO": "4-302",
+        "VEHÍCULOS_PLACAS": "PLM-887",
+        "ESTADO": "Activo",
+        "OBSERVACIONES": "CARRO"
+    },
+    {
+        "NÚMERO_PARQUEADERO": "463",
+        "APARTAMENTO": "7-502",
+        "VEHÍCULOS_PLACAS": "WSX-334",
+        "ESTADO": "Activo",
+        "OBSERVACIONES": "CARRO"
+    },
+    {
+        "NÚMERO_PARQUEADERO": "481",
+        "APARTAMENTO": "4-101",
+        "VEHÍCULOS_PLACAS": "KGT-223",
+        "ESTADO": "Activo",
+        "OBSERVACIONES": "CARRO"
+    }
+]

@@ -1,0 +1,73 @@
+# Local Netlify folder
+.netlify
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+.env.development
+.env.production
+.env.test
+!**/.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+!docker/build/
+!docker/build/**
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Django
+*.log
+local_settings.py
+*.sqlite3
+*.sqlite3-journal
+media/
+staticfiles/
+backups/*.sql
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+
+# Node / Next.js
+node_modules/
+.next/
+.turbo/
+coverage/
+*.tsbuildinfo
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Local tooling / workspace metadata
+.agent/
+.codex
+.commands/
+.docs/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local accidental files
+=2.0.0

@@ -1,0 +1,57 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: public_admin_db
+    volumes:
+      - public_postgres_data:/var/lib/postgresql/data
+    env_file:
+      - ../../services/backend/.env
+    ports:
+      - "5432:5432"
+    networks:
+      - admin_network
+
+  backend:
+    build:
+      context: ../../
+      dockerfile: docker/build/backend.Dockerfile
+    container_name: public_admin_backend
+    volumes:
+      - ../../services/backend:/app
+    ports:
+      - "8000:8000"
+    env_file:
+      - ../../services/backend/.env
+    environment:
+      - DJANGO_SETTINGS_MODULE=config.settings
+    depends_on:
+      - db
+    networks:
+      - admin_network
+
+  frontend:
+    build:
+      context: ../../
+      dockerfile: docker/build/frontend.Dockerfile
+    container_name: public_admin_frontend
+    ports:
+      - "3001:3000"
+    volumes:
+      - ../../services/frontend:/app
+      - /app/node_modules
+    env_file:
+      - ../../services/frontend/.env.local
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - backend
+    networks:
+      - admin_network
+
+volumes:
+  public_postgres_data:
+
+networks:
+  admin_network:
+    driver: bridge
+    name: admin_network
