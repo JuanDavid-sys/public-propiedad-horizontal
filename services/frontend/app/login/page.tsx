@@ -14,6 +14,7 @@ import { AuthPageSkeleton } from '@/components/skeletons/PageSkeletons';
 import { MOCK_AUTH_USER } from '@/lib/constants/auth.mocks';
 import { InfoIcon, ClipboardCheckIcon } from 'lucide-react';
 
+const GOOGLE_AUTH_ENABLED = process.env.NEXT_PUBLIC_GOOGLE_AUTH_ENABLED === 'true';
 
 function LoginPageContent() {
     const router = useRouter();
@@ -92,7 +93,7 @@ function LoginPageContent() {
                 pushOptimistic('/apartamentos');
                 router.refresh();
             }
-        } catch (error) {
+        } catch {
             setError('Ocurrió un error inesperado. Intenta de nuevo más tarde.');
             setLoading(false);
         }
@@ -241,30 +242,34 @@ function LoginPageContent() {
                         </Button>
                     </form>
 
-                    {/* Separador */}
-                    <div className="relative">
-                        <div className="absolute inset-0 flex items-center">
-                            <span className="w-full border-t border-zinc-200" />
-                        </div>
-                        <div className="relative flex justify-center text-xs">
-                            <span className="bg-gradient-to-br from-zinc-50 to-zinc-100 px-4 text-zinc-400 uppercase tracking-wider">
-                                O continuar con
-                            </span>
-                        </div>
-                    </div>
+                    {GOOGLE_AUTH_ENABLED && (
+                        <>
+                            {/* Separador */}
+                            <div className="relative">
+                                <div className="absolute inset-0 flex items-center">
+                                    <span className="w-full border-t border-zinc-200" />
+                                </div>
+                                <div className="relative flex justify-center text-xs">
+                                    <span className="bg-gradient-to-br from-zinc-50 to-zinc-100 px-4 text-zinc-400 uppercase tracking-wider">
+                                        O continuar con
+                                    </span>
+                                </div>
+                            </div>
 
-                    {/* Botón Google */}
-                    <Button
-                        variant="outline"
-                        className="w-full h-12 bg-white border-zinc-200 hover:bg-zinc-50 hover:border-zinc-300 rounded-xl transition-all gap-3"
-                        onClick={() => {
-                            document.cookie = "auth_action=login; path=/; max-age=300";
-                            signIn('google', { callbackUrl: '/apartamentos' });
-                        }}
-                    >
-                        <GoogleIcon className="w-5 h-5 text-zinc-600" />
-                        <span className="text-zinc-700">Continuar con Google</span>
-                    </Button>
+                            {/* Botón Google */}
+                            <Button
+                                variant="outline"
+                                className="w-full h-12 bg-white border-zinc-200 hover:bg-zinc-50 hover:border-zinc-300 rounded-xl transition-all gap-3"
+                                onClick={() => {
+                                    document.cookie = "auth_action=login; path=/; max-age=300";
+                                    signIn('google', { callbackUrl: '/apartamentos' });
+                                }}
+                            >
+                                <GoogleIcon className="w-5 h-5 text-zinc-600" />
+                                <span className="text-zinc-700">Continuar con Google</span>
+                            </Button>
+                        </>
+                    )}
 
                     {/* Footer */}
                     <div className="text-center pt-4">

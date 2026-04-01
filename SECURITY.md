@@ -9,9 +9,9 @@
 ### 1.1 OAuth 2.0 Client ID (Autenticación de usuarios)
 
 1. Ve a [Google Cloud Console](https://console.cloud.google.com/)
-2. Selecciona tu proyecto de Google Cloud (o el que corresponda)
+2. Selecciona tu proyecto: `89612992877` (o el que corresponda)
 3. Navega a: **APIs & Services** → **Credentials**
-4. Busca el cliente OAuth comprometido y elimínalo. Ejemplo de formato: `tu-client-id.apps.googleusercontent.com`
+4. Busca el cliente OAuth: `89612992877-5vl28hm85oqf8vta0dsiad0jt4dgptls.apps.googleusercontent.com`
 5. Haz clic en el cliente
 6. Presiona **DELETE** para eliminarlo permanentemente
 7. Crea un nuevo cliente OAuth:
@@ -23,7 +23,7 @@
 
 ### 1.2 Service Account (Google Sheets)
 
-1. En **Credentials**, busca el Service Account comprometido. Ejemplo de formato: `tu-service-account@tu-proyecto.iam.gserviceaccount.com`
+1. En **Credentials**, busca el Service Account: `sheets-connector@residential-management-485923.iam.gserviceaccount.com`
 2. Ve a **IAM & Admin** → **Service Accounts**
 3. Selecciona el Service Account
 4. Ve a la pestaña **Keys**
@@ -102,7 +102,7 @@ INTERNAL_API_URL=http://backend:8000/api
 
 GOOGLE_SHEET_ID=1zq5yJP8tfDasuhc-PoyOR9fJKYZBaT9cIQAGMzbyPFg
 GOOGLE_SERVICE_ACCOUNT_EMAIL=nuevo_service_account@tu-proyecto.iam.gserviceaccount.com
-GOOGLE_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\n...contenido del archivo JSON descargado...\n-----END PRIVATE KEY-----"
+GOOGLE_PRIVATE_KEY="tu_private_key_escapada_aqui"
 ```
 
 **Nota**: El `GOOGLE_PRIVATE_KEY` debe tener los saltos de línea escapados como `\n`.
@@ -172,7 +172,7 @@ Si las credenciales estaban en el historial de git, debes eliminarlas:
 git filter-repo --path services/frontend/.env.local --invert-paths
 
 # O si quieres limpiar archivos específicos de múltiples commits
-git filter-repo --replace-text <(echo 'tu-client-secret-comprometido==>REDACTED')
+git filter-repo --replace-text <(echo 'tu_client_secret_comprometido==>REDACTED')
 ```
 
 **Alternativa más segura**: Si el repo es privado y tiene poco historial, considera crear un nuevo repo y migrar el código sin las credenciales.

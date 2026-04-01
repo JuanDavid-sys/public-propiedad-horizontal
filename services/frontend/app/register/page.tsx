@@ -12,6 +12,8 @@ import { AlertCircleIcon, ArrowRightIcon, BuildingIcon, GoogleIcon, LockIcon, Ma
 import { signIn } from 'next-auth/react';
 import api from '@/lib/api';
 
+const GOOGLE_AUTH_ENABLED = process.env.NEXT_PUBLIC_GOOGLE_AUTH_ENABLED === 'true';
+
 export default function RegisterPage() {
     const router = useRouter();
     const { pushOptimistic } = useOptimisticNavigation();
@@ -66,7 +68,7 @@ export default function RegisterPage() {
         setLoading(true);
 
         try {
-            const response = await api.post('/auth/register', formData);
+            await api.post('/auth/register', formData);
 
             const result = await signIn('credentials', {
                 email: formData.email,
@@ -303,30 +305,34 @@ export default function RegisterPage() {
                         </Button>
                     </form>
 
-                    {/* Separador */}
-                    <div className="relative">
-                        <div className="absolute inset-0 flex items-center">
-                            <span className="w-full border-t border-zinc-200" />
-                        </div>
-                        <div className="relative flex justify-center text-xs">
-                            <span className="bg-gradient-to-br from-zinc-50 to-zinc-100 px-4 text-zinc-400 uppercase tracking-wider">
-                                O registrarse con
-                            </span>
-                        </div>
-                    </div>
+                    {GOOGLE_AUTH_ENABLED && (
+                        <>
+                            {/* Separador */}
+                            <div className="relative">
+                                <div className="absolute inset-0 flex items-center">
+                                    <span className="w-full border-t border-zinc-200" />
+                                </div>
+                                <div className="relative flex justify-center text-xs">
+                                    <span className="bg-gradient-to-br from-zinc-50 to-zinc-100 px-4 text-zinc-400 uppercase tracking-wider">
+                                        O registrarse con
+                                    </span>
+                                </div>
+                            </div>
 
-                    {/* Google */}
-                    <Button
-                        variant="outline"
-                        className="w-full h-12 bg-white border-zinc-200 hover:bg-zinc-50 hover:border-zinc-300 rounded-xl transition-all gap-3"
-                        onClick={() => {
-                            document.cookie = "auth_action=register; path=/; max-age=300";
-                            signIn('google', { callbackUrl: '/apartamentos' });
-                        }}
-                    >
-                        <GoogleIcon className="w-5 h-5 text-zinc-600" />
-                        <span className="text-zinc-700">Continuar con Google</span>
-                    </Button>
+                            {/* Google */}
+                            <Button
+                                variant="outline"
+                                className="w-full h-12 bg-white border-zinc-200 hover:bg-zinc-50 hover:border-zinc-300 rounded-xl transition-all gap-3"
+                                onClick={() => {
+                                    document.cookie = "auth_action=register; path=/; max-age=300";
+                                    signIn('google', { callbackUrl: '/apartamentos' });
+                                }}
+                            >
+                                <GoogleIcon className="w-5 h-5 text-zinc-600" />
+                                <span className="text-zinc-700">Continuar con Google</span>
+                            </Button>
+                        </>
+                    )}
 
                     {/* Footer */}
                     <div className="text-center space-y-3">

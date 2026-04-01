@@ -1,112 +1,67 @@
-# Admin Propiedad Horizontal
+# Public Admin Propiedad Horizontal
 
-Aplicacion web para administrar conjuntos residenciales y procesos de propiedad horizontal desde una interfaz moderna. El proyecto centraliza la gestion de unidades, personas, vehiculos, mascotas, parqueaderos, documentos y autenticacion en un mismo sistema.
+Plataforma web full-stack para la administracion de conjuntos residenciales y propiedad horizontal.
 
-Hoy el core funcional implementado esta orientado a operacion residencial y directorio administrativo. La landing comercial muestra ademas un roadmap de modulos futuros como gestion financiera, comunicaciones, reservas y votaciones.
+Este proyecto centraliza en una sola aplicacion la gestion de:
 
-## Tabla de contenido
+- unidades residenciales;
+- propietarios y residentes;
+- vehiculos y parqueaderos;
+- mascotas;
+- documentos por apartamento;
+- autenticacion y acceso a la plataforma.
 
-- [Que resuelve esta aplicacion](#que-resuelve-esta-aplicacion)
-- [Funciones principales](#funciones-principales)
-- [Arquitectura del proyecto](#arquitectura-del-proyecto)
-- [Tecnologias usadas](#tecnologias-usadas)
-- [Estructura del repositorio](#estructura-del-repositorio)
-- [Requisitos previos](#requisitos-previos)
-- [Instalacion desde GitHub](#instalacion-desde-github)
-- [Configuracion de variables de entorno](#configuracion-de-variables-de-entorno)
-- [Levantamiento con Docker](#levantamiento-con-docker)
-- [Levantamiento sin Docker](#levantamiento-sin-docker)
-- [Carga inicial de datos](#carga-inicial-de-datos)
-- [Como usar la aplicacion](#como-usar-la-aplicacion)
-- [Modo mock y demo local](#modo-mock-y-demo-local)
-- [Comandos utiles de desarrollo](#comandos-utiles-de-desarrollo)
-- [API y modulos del backend](#api-y-modulos-del-backend)
-- [Problemas frecuentes](#problemas-frecuentes)
-- [Estado actual del proyecto](#estado-actual-del-proyecto)
+La idea principal es reemplazar procesos dispersos en hojas de calculo, archivos sueltos y seguimiento manual por una herramienta operativa mas clara, navegable y escalable.
 
-## Que resuelve esta aplicacion
+## Que es este proyecto
 
-La aplicacion esta pensada para conjuntos residenciales, copropiedades y equipos administrativos que necesitan dejar atras hojas de calculo dispersas, chats y registros manuales.
+Este repositorio contiene una aplicacion en fase beta enfocada en administracion residencial. El sistema ya permite operar el nucleo del dominio: directorio de apartamentos, relacion entre personas y unidades, control de parqueaderos, registro de vehiculos y mascotas, y carga de documentos.
 
-Permite:
+Si alguien llega desde GitHub para evaluar el proyecto, aqui va a encontrar:
 
-- mantener un directorio unificado de torres, apartamentos y su estado de ocupacion;
-- relacionar propietarios y residentes con cada unidad;
-- registrar vehiculos, asignarles parqueadero y consultar ocupacion;
-- llevar el censo de mascotas;
-- adjuntar documentos por unidad;
-- autenticar usuarios con correo/contrasena o Google OAuth;
-- exponer una API para consumo del frontend y futuras integraciones.
+- una aplicacion real con frontend y backend separados;
+- una base de datos relacional con reglas de integridad del negocio;
+- autenticacion con credenciales y Google OAuth;
+- una interfaz tipo dashboard orientada a operacion administrativa;
+- un entorno local reproducible con Docker;
+- un modo demo por defecto para verlo rapido despues de clonar.
 
-## Funciones principales
+## Que puede hacer hoy
 
-### Modulos actualmente implementados
+### Modulos implementados
 
-- **Unidades residenciales**
+- **Apartamentos**
   - listado por torre y estado;
-  - detalle de cada unidad;
+  - vista detalle por unidad;
   - conteos de propietarios, residentes, vehiculos, bicicletas y mascotas;
   - observaciones, tags y autorizaciones;
-  - relacion con parqueadero privado;
-  - carga y eliminacion de documentos.
+  - documentos asociados por unidad.
 
 - **Personas**
   - directorio de propietarios y residentes;
-  - alta, edicion y eliminacion;
-  - relacion de una persona con una o varias unidades;
-  - campos administrativos como documento, telefono, correo, autorizacion de datos y observaciones.
+  - creacion, edicion y eliminacion;
+  - relacion de una persona con una o varias unidades.
 
 - **Vehiculos**
-  - listado general por placa;
-  - detalle por unidad o por placa global;
-  - asignacion y desasignacion de vehiculos a apartamentos;
-  - vinculacion con parqueaderos privados;
-  - eliminacion de registros.
+  - directorio general por placa;
+  - asignacion a una unidad;
+  - relacion con parqueadero privado.
 
 - **Mascotas**
-  - censo general por unidad;
-  - alta, edicion y eliminacion;
-  - estado de vacunacion y observaciones.
+  - censo por unidad;
+  - registro, actualizacion y eliminacion.
 
 - **Parqueaderos**
-  - inventario de parqueaderos privados y de visitantes;
-  - relacion entre parqueadero, unidad y vehiculo;
-  - validaciones para evitar inconsistencias.
+  - inventario de privados y visitantes;
+  - validaciones para evitar inconsistencias entre unidad, parqueadero y vehiculo.
 
 - **Autenticacion**
   - registro con correo y contrasena;
   - login con correo y contrasena;
   - login y registro con Google OAuth;
-  - JWT access/refresh tokens;
-  - sesiones y auditoria basica en backend.
+  - JWT en backend y sesion en frontend.
 
-- **Busqueda**
-  - busqueda transversal de unidades, personas, vehiculos, mascotas y parqueaderos desde el dashboard.
-
-### Funciones visibles pero aun no terminadas
-
-- modulo de configuracion;
-- parte de personalizacion del perfil;
-- roadmap comercial en la landing: gestion financiera, comunicacion, reservas y votacion.
-
-## Arquitectura del proyecto
-
-El proyecto esta dividido en tres capas principales:
-
-1. **Frontend**
-   - Aplicacion Next.js 16 con App Router.
-   - Usa NextAuth para sesion y autenticacion.
-   - Consume el backend Django via server actions, fetch y Axios.
-
-2. **Backend**
-   - API en Django 5 + Django Ninja.
-   - JWT para autenticacion.
-   - Modelos para usuarios, unidades, personas, vehiculos, mascotas, documentos y parqueaderos.
-
-3. **Base de datos**
-   - PostgreSQL 16.
-
-## Tecnologias usadas
+## Stack tecnico
 
 ### Frontend
 
@@ -115,7 +70,6 @@ El proyecto esta dividido en tres capas principales:
 - TypeScript
 - NextAuth
 - TanStack Query
-- Axios
 - Zustand
 
 ### Backend
@@ -123,177 +77,85 @@ El proyecto esta dividido en tres capas principales:
 - Python 3.12
 - Django 5
 - Django Ninja
-- django-ninja-jwt
-- PostgreSQL
+- JWT con `django-ninja-jwt`
 
-### Infraestructura local
+### Infraestructura
 
+- PostgreSQL 16
 - Docker
 - Docker Compose
-- Makefile para automatizar comandos comunes
+- Makefile para comandos frecuentes
 
-## Estructura del repositorio
+## Arquitectura
+
+El proyecto esta dividido en tres piezas:
+
+1. **Frontend**
+   - App Router con Next.js.
+   - Dashboard administrativo, login, registro y landing comercial.
+
+2. **Backend**
+   - API REST con Django Ninja.
+   - Modelos de usuarios, unidades, personas, vehiculos, mascotas, documentos y parqueaderos.
+
+3. **Base de datos**
+   - PostgreSQL como almacenamiento principal.
+
+## Como correrlo localmente
+
+La forma recomendada de levantar el proyecto es con Docker.
+
+## Demo local en 2 pasos
+
+El repositorio ahora esta preparado para que puedas clonarlo y verlo sin configurar variables de entorno primero.
+
+### 1. Clonar el repositorio
+
+```bash
+git clone https://github.com/JuanDavid-sys/public-propiedad-horizontal.git
+cd public-propiedad-horizontal
+```
+
+### 2. Encenderlo
+
+```bash
+make start-development
+```
+
+Luego abre:
+
+- Frontend: `http://localhost:3001`
+- API: `http://localhost:8000/api`
+- Admin Django: `http://localhost:8000/admin/`
+
+Credenciales demo:
 
 ```text
-.
-├── docker/
-│   ├── build/
-│   └── development/
-├── services/
-│   ├── backend/
-│   │   ├── config/
-│   │   ├── residential/
-│   │   └── users/
-│   └── frontend/
-│       ├── app/
-│       ├── components/
-│       ├── lib/
-│       └── public/
-├── Makefile
-└── README.md
+Correo: admin@example.com
+Contrasena: admin123
 ```
 
-## Requisitos previos
+Notas:
 
-Para trabajar en local necesitas una de estas dos rutas:
+- Google OAuth es opcional y en la demo local viene desactivado por defecto;
+- si `3001` o `8000` ya estan ocupados en tu maquina, libera esos puertos o ajusta los mapeos en `docker/development/docker-compose.yml`.
 
-- **Ruta recomendada:** Docker + Docker Compose.
-- **Ruta manual:** Python 3.12, Node.js 20+, npm y PostgreSQL 16.
+Con eso ya puedes empezar a recorrer el proyecto.
 
-Tambien vas a necesitar:
+## Quickstart con Docker
 
-- `openssl` para generar secretos;
-- una cuenta de Google Cloud solo si vas a habilitar Google OAuth.
+### Que hace el arranque por defecto
 
-## Instalacion desde GitHub
+Cuando ejecutas `make start-development`, el proyecto:
 
-Cuando el proyecto se publique en GitHub, el flujo recomendado para instalarlo sera este:
+- levanta PostgreSQL;
+- levanta el backend Django;
+- ejecuta migraciones automaticamente;
+- levanta el frontend Next.js;
+- activa el frontend en modo mock para que el dashboard tenga contenido navegable desde el primer arranque.
+- mantiene Google OAuth desactivado hasta que configures tus credenciales.
 
-```bash
-git clone https://github.com/tu-organizacion/public-admin-propiedad-horizontal.git
-cd public-admin-propiedad-horizontal
-```
-
-Luego copia los archivos de entorno base:
-
-```bash
-cp services/backend/.env.example services/backend/.env
-cp services/frontend/.env.example services/frontend/.env.local
-```
-
-Si quieres generar secretos rapidamente, puedes apoyarte en:
-
-```bash
-./scripts/generate-secrets.sh
-```
-
-Despues edita esos archivos con tus valores reales antes de levantar servicios.
-
-## Configuracion de variables de entorno
-
-### Backend: `services/backend/.env`
-
-Variables minimas para correr el backend:
-
-| Variable | Obligatoria | Ejemplo | Descripcion |
-| --- | --- | --- | --- |
-| `SECRET_KEY` | Si | `openssl rand -base64 50` | Clave secreta de Django |
-| `DEBUG` | Si | `True` | Modo desarrollo |
-| `ALLOWED_HOSTS` | Si | `localhost,127.0.0.1,backend` | Hosts permitidos |
-| `DATABASE_URL` | Si | `postgresql://admin_user:tu_password@db:5432/admin_db` | Conexion a PostgreSQL |
-| `DATABASE_SSL` | No | `False` | SSL para DB |
-| `CORS_ALLOWED_ORIGINS` | Si | `http://localhost:3001,http://127.0.0.1:3001` | Origenes permitidos del frontend |
-| `POSTGRES_DB` | Recomendado en Docker | `admin_db` | Base usada por el contenedor Postgres |
-| `POSTGRES_USER` | Recomendado en Docker | `admin_user` | Usuario de Postgres |
-| `POSTGRES_PASSWORD` | Recomendado en Docker | valor seguro | Password de Postgres |
-
-Ejemplo para Docker:
-
-```env
-SECRET_KEY=pon_aqui_un_valor_seguro
-DEBUG=True
-ALLOWED_HOSTS=localhost,127.0.0.1,backend
-POSTGRES_DB=admin_db
-POSTGRES_USER=admin_user
-POSTGRES_PASSWORD=pon_aqui_un_password_seguro
-DATABASE_URL=postgresql://admin_user:pon_aqui_un_password_seguro@db:5432/admin_db
-DATABASE_SSL=False
-CORS_ALLOWED_ORIGINS=http://localhost:3001,http://127.0.0.1:3001
-```
-
-Ejemplo para ejecucion manual:
-
-```env
-SECRET_KEY=pon_aqui_un_valor_seguro
-DEBUG=True
-ALLOWED_HOSTS=localhost,127.0.0.1
-POSTGRES_DB=admin_db
-POSTGRES_USER=admin_user
-POSTGRES_PASSWORD=pon_aqui_un_password_seguro
-DATABASE_URL=postgresql://admin_user:pon_aqui_un_password_seguro@localhost:5432/admin_db
-DATABASE_SSL=False
-CORS_ALLOWED_ORIGINS=http://localhost:3001,http://127.0.0.1:3001
-```
-
-### Frontend: `services/frontend/.env.local`
-
-Variables recomendadas para el frontend:
-
-| Variable | Obligatoria | Ejemplo | Descripcion |
-| --- | --- | --- | --- |
-| `AUTH_SECRET` | Si | `openssl rand -base64 32` | Secreto de NextAuth |
-| `NEXTAUTH_URL` | Si | `http://localhost:3001` | URL publica del frontend |
-| `AUTH_GOOGLE_ID` | Depende | valor de Google Cloud | Cliente OAuth |
-| `AUTH_GOOGLE_SECRET` | Depende | valor de Google Cloud | Secreto OAuth |
-| `NEXT_PUBLIC_API_URL` | Si | `http://localhost:8000/api` | URL del backend vista por el navegador |
-| `INTERNAL_API_URL` | Si | `http://backend:8000/api` o `http://localhost:8000/api` | URL del backend usada del lado servidor |
-| `NEXT_PUBLIC_USE_MOCKS` | No | `true` | Activa datasets mock en frontend |
-
-Ejemplo para Docker:
-
-```env
-AUTH_SECRET=pon_aqui_un_valor_seguro
-NEXTAUTH_URL=http://localhost:3001
-AUTH_GOOGLE_ID=
-AUTH_GOOGLE_SECRET=
-NEXT_PUBLIC_API_URL=http://localhost:8000/api
-INTERNAL_API_URL=http://backend:8000/api
-NEXT_PUBLIC_USE_MOCKS=false
-```
-
-Ejemplo para ejecucion manual:
-
-```env
-AUTH_SECRET=pon_aqui_un_valor_seguro
-NEXTAUTH_URL=http://localhost:3001
-AUTH_GOOGLE_ID=
-AUTH_GOOGLE_SECRET=
-NEXT_PUBLIC_API_URL=http://localhost:8000/api
-INTERNAL_API_URL=http://localhost:8000/api
-NEXT_PUBLIC_USE_MOCKS=false
-```
-
-### Configuracion de Google OAuth
-
-Si vas a habilitar login con Google, configura el callback:
-
-```text
-http://localhost:3001/api/auth/callback/google
-```
-
-Si no vas a usar Google en tu primera prueba, deja esas variables listas para despues y usa registro con correo/contrasena.
-
-## Levantamiento con Docker
-
-Esta es la forma mas simple de correr el stack completo.
-
-### 1. Construir contenedores
-
-```bash
-make build-development
-```
-
-### 2. Iniciar servicios
+### Comando principal
 
 ```bash
 make start-development
@@ -302,40 +164,66 @@ make start-development
 Esto levanta:
 
 - PostgreSQL en `localhost:5432`
-- Django en `localhost:8000`
-- Next.js en `localhost:3001`
+- Backend en `localhost:8000`
+- Frontend en `localhost:3001`
 
-### 3. Ejecutar migraciones
-
-El `docker-compose` actual **no corre migraciones automaticamente**, asi que este paso es obligatorio la primera vez:
-
-```bash
-docker exec public_admin_backend python manage.py migrate
-```
-
-### 4. Crear un superusuario opcional
-
-Si quieres entrar al admin de Django:
-
-```bash
-docker exec -it public_admin_backend python manage.py createsuperuser
-```
-
-### 5. Abrir la aplicacion
-
-- Frontend: `http://localhost:3001`
-- Backend API base: `http://localhost:8000/api`
-- Admin Django: `http://localhost:8000/admin/`
-
-### 6. Apagar servicios
+### Apagar servicios
 
 ```bash
 make stop-development
 ```
 
-## Levantamiento sin Docker
+### Crear datos base reales opcionales
 
-Si prefieres correr todo directamente en tu maquina:
+Si despues quieres usar el backend con datos propios y no solo con mocks, puedes crear una estructura vacia de torres, apartamentos y parqueaderos:
+
+```bash
+docker exec public_admin_backend python manage.py seed_empty_units
+```
+
+### Abrir la aplicacion
+
+- Frontend: `http://localhost:3001`
+- API: `http://localhost:8000/api`
+- Admin Django: `http://localhost:8000/admin/`
+
+## Como funciona el modo demo
+
+Por defecto, el frontend arranca con mocks activos. Eso significa que:
+
+- puedes entrar de inmediato con la cuenta de prueba;
+- puedes recorrer el dashboard sin depender de que ya exista carga real en la base de datos;
+- la interfaz muestra el alcance visual y funcional del producto desde el primer minuto.
+
+Al mismo tiempo, el backend **no queda inutil**:
+
+- sigue levantando como parte del stack;
+- sigue mostrando que el proyecto es realmente full-stack;
+- deja disponible la API;
+- deja disponible Django Admin;
+- permite pasar despues a datos reales o pruebas mas tecnicas.
+
+En otras palabras: el modo mock mejora la experiencia de evaluacion, pero el backend sigue siendo parte importante de lo que demuestra el proyecto.
+
+## Variables de entorno opcionales
+
+Para el modo demo por defecto, no necesitas crear `.env`.
+
+Solo te haria falta si quieres:
+
+- cambiar secretos locales;
+- desactivar mocks;
+- habilitar Google OAuth;
+- apuntar a otro backend o a otra base de datos.
+
+Para eso ya existen:
+
+- `services/frontend/.env.example`
+- `services/backend/.env.example`
+
+## Ejecucion manual sin Docker
+
+Si prefieres correrlo sin contenedores:
 
 ### Backend
 
@@ -350,257 +238,77 @@ python manage.py runserver 0.0.0.0:8000
 
 ### Frontend
 
-En otra terminal:
-
 ```bash
 cd services/frontend
 npm install
 npm run dev -- --port 3001
 ```
 
-Abre:
+En ejecucion manual si te conviene crear:
 
-- Frontend: `http://localhost:3001`
-- Backend: `http://localhost:8000`
+- `services/backend/.env`
+- `services/frontend/.env.local`
 
-## Carga inicial de datos
+tomando como base los archivos `.env.example`.
 
-Tienes varias opciones para preparar datos de prueba.
+## Flujo recomendado para evaluar el proyecto
 
-### Opcion A: crear estructura base vacia
+Si alguien entra al repo y quiere entenderlo rapido, este es el mejor recorrido:
 
-Genera torres, pisos, apartamentos y parqueaderos minimos:
+1. Levantar el proyecto con Docker.
+2. Entrar con la cuenta mock o registrarte.
+3. Revisar el directorio de apartamentos.
+4. Abrir una unidad y ver personas, vehiculos, mascotas, parqueadero y documentos.
+5. Pasar luego por los directorios de personas, vehiculos, mascotas y parqueaderos.
 
-```bash
-docker exec public_admin_backend python manage.py seed_empty_units
-```
+Eso da una vista bastante completa del alcance actual del sistema.
 
-Parametros disponibles:
-
-```bash
-docker exec public_admin_backend python manage.py seed_empty_units --towers 10 --floors 16 --apartments-per-floor 4 --visitor-spaces 10
-```
-
-### Opcion B: sincronizar solo inventario de parqueaderos
-
-```bash
-docker exec public_admin_backend python manage.py sync_parking_inventory --visitor-spaces 10
-```
-
-### Opcion C: cargar datos desde JSON
-
-El proyecto tiene un comando:
-
-```bash
-docker exec public_admin_backend python manage.py load_residential_data
-```
-
-Pero ten presente que **espera archivos JSON en** `services/backend/residential/data_migration/` y esa carpeta no esta incluida hoy en este repositorio. Si quieres usar este flujo, primero debes agregar:
-
-- `people.json`
-- `units.json`
-- `vehicles.json`
-
-## Como usar la aplicacion
-
-### Flujo recomendado para primera prueba
-
-1. Levanta el stack.
-2. Corre migraciones.
-3. Crea un usuario desde `/register` o un superusuario en Django.
-4. Entra por `/login`.
-5. Navega el dashboard desde el menu lateral.
-
-### Rutas principales del frontend
-
-| Ruta | Uso |
-| --- | --- |
-| `/` | Landing comercial y acceso rapido |
-| `/login` | Inicio de sesion |
-| `/register` | Registro de usuario |
-| `/apartamentos` | Directorio de unidades |
-| `/personas` | Directorio de personas |
-| `/vehiculos` | Directorio de vehiculos |
-| `/mascotas` | Censo de mascotas |
-| `/parqueaderos` | Inventario de parqueaderos |
-| `/search-results?q=...` | Busqueda global |
-
-### Rutas principales del backend
-
-| Ruta base | Uso |
-| --- | --- |
-| `/api/auth` | Registro, login, refresh, logout, usuario actual |
-| `/api/residential` | Unidades, personas, vehiculos, mascotas, documentos y parqueaderos |
-| `/admin/` | Administracion de Django |
-
-### Casos de uso comunes
-
-#### Consultar unidades
-
-- Entra a `/apartamentos`.
-- Filtra por torre o estado.
-- Abre una fila para ver el detalle completo de la unidad.
-
-#### Registrar una persona
-
-- Entra a `/personas`.
-- Crea el registro desde la interfaz.
-- Asocia la persona a una unidad desde los flujos de detalle o asignacion.
-
-#### Registrar un vehiculo
-
-- Entra a una unidad o al directorio de vehiculos.
-- Crea o asigna el vehiculo.
-- Si existe parqueadero privado valido, puedes vincularlo.
-
-#### Registrar una mascota
-
-- Entra a una unidad o al censo de mascotas.
-- Agrega la mascota con especie, raza, vacunacion y observaciones.
-
-#### Subir documentos por unidad
-
-- Ve al detalle de una unidad.
-- Carga contrato, certificado u otro tipo de documento.
-- El backend guarda el archivo en `services/backend/media/unit_documents/`.
-
-## Modo mock y demo local
-
-El frontend soporta un modo mock a traves de:
-
-```env
-NEXT_PUBLIC_USE_MOCKS=true
-```
-
-Cuando activas ese flag:
-
-- varias pantallas usan datos simulados en lugar de consultar el backend real;
-- el login mock del frontend resulta util para recorrer la interfaz;
-- algunas ediciones de demo se persisten de forma temporal en disco.
-
-### Credenciales mock de desarrollo
+## Estructura del repositorio
 
 ```text
-Correo: admin@example.com
-Contrasena: admin123
+.
+├── docker/
+├── scripts/
+├── services/
+│   ├── backend/
+│   │   ├── config/
+│   │   ├── residential/
+│   │   └── users/
+│   └── frontend/
+│       ├── app/
+│       ├── components/
+│       ├── lib/
+│       └── public/
+├── Makefile
+└── README.md
 ```
 
-Importante:
+## Estado actual
 
-- estas credenciales mock tienen sentido sobre todo en **modo mock**;
-- si el frontend esta apuntando al backend real y no usas mocks, lo recomendable es registrarte con `/register` o crear un usuario real en Django.
+El proyecto ya es funcional como base de una plataforma administrativa residencial, pero sigue en evolucion.
 
-## Comandos utiles de desarrollo
+### Ya resuelto
 
-### Makefile
+- estructura full-stack completa;
+- autenticacion;
+- modulos operativos principales;
+- despliegue local reproducible;
+- reglas de integridad entre unidades, parqueaderos y vehiculos.
 
-```bash
-make build-development
-make start-development
-make stop-development
-```
+### Aun en evolucion
 
-### Backend
+- configuracion avanzada;
+- parte del modulo de perfil;
+- modulos futuros de gestion financiera, comunicacion y reservas.
 
-```bash
-cd services/backend
-python manage.py migrate
-python manage.py createsuperuser
-python manage.py test
-```
+## Documentacion adicional
 
-### Frontend
+Este README esta pensado como portada del proyecto. La documentacion mas especifica vive en:
 
-```bash
-cd services/frontend
-npm install
-npm run dev -- --port 3001
-npm run lint
-npm run build
-```
+- `SECURITY.md`
+- `NETLIFY_DEPLOY.md`
+- `GOOGLE_OAUTH_INTEGRATION.md`
 
-## API y modulos del backend
+## Licencia
 
-### Autenticacion
-
-Principales endpoints:
-
-- `POST /api/auth/register`
-- `POST /api/auth/login`
-- `POST /api/auth/google-auth`
-- `POST /api/auth/google-register`
-- `POST /api/auth/refresh`
-- `POST /api/auth/logout`
-- `GET /api/auth/me`
-
-### Gestion residencial
-
-Principales endpoints:
-
-- `GET /api/residential/units`
-- `GET /api/residential/units/{tower}/{unit_number}`
-- `PATCH /api/residential/units/{tower}/{unit_number}`
-- `GET /api/residential/people`
-- `POST /api/residential/people`
-- `PATCH /api/residential/people/{document_number}`
-- `DELETE /api/residential/people/{document_number}`
-- `GET /api/residential/vehicles`
-- `GET /api/residential/vehicles/{plate}`
-- `POST /api/residential/units/{tower}/{unit_number}/assign-vehicle`
-- `GET /api/residential/pets`
-- `POST /api/residential/units/{tower}/{unit_number}/assign-pet`
-- `GET /api/residential/parking`
-- `POST /api/residential/units/{tower}/{unit_number}/documents`
-
-## Problemas frecuentes
-
-### La aplicacion abre pero no muestra datos
-
-Revisa:
-
-- que corriste `python manage.py migrate`;
-- que la base de datos tenga registros;
-- que `NEXT_PUBLIC_USE_MOCKS` no este en un valor distinto al esperado;
-- que `INTERNAL_API_URL` y `NEXT_PUBLIC_API_URL` apunten correctamente al backend.
-
-### El frontend en Docker no logra hablar con el backend
-
-Dentro de Docker, `INTERNAL_API_URL` debe usar el nombre del servicio:
-
-```env
-INTERNAL_API_URL=http://backend:8000/api
-```
-
-### El login con Google falla
-
-Verifica:
-
-- `AUTH_GOOGLE_ID`
-- `AUTH_GOOGLE_SECRET`
-- `NEXTAUTH_URL`
-- callback OAuth configurado como `http://localhost:3001/api/auth/callback/google`
-
-### El login mock entra, pero luego la app no funciona bien contra el backend
-
-Eso suele pasar cuando usas credenciales mock sin activar:
-
-```env
-NEXT_PUBLIC_USE_MOCKS=true
-```
-
-Para trabajar contra backend real, usa usuarios reales.
-
-### El comando `load_residential_data` falla
-
-Ese comando requiere archivos JSON que hoy no vienen incluidos en el repo. Usa `seed_empty_units` mientras preparas esos datos.
-
-## Estado actual del proyecto
-
-El proyecto esta en una fase funcional de beta. Ya permite operar el nucleo de administracion residencial, pero todavia hay modulos visuales o comerciales en evolucion.
-
-Si vas a publicarlo en GitHub, este README ya queda listo como base para:
-
-- onboarding tecnico;
-- instalacion local;
-- despliegues iniciales;
-- documentacion funcional del producto.
+Por definir.

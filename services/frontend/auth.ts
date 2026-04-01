@@ -10,6 +10,7 @@ const REFRESH_RETRY_BASE_DELAY_MS = 2000;
 const REFRESH_RETRY_MAX_DELAY_MS = 30000;
 const REFRESH_ERROR_INVALID = "RefreshAccessTokenError";
 const REFRESH_ERROR_NETWORK = "RefreshNetworkError";
+type AuthProvider = ReturnType<typeof Google> | ReturnType<typeof Credentials>;
 
 function getRefreshRetryDelayMs(retryCount: number) {
     const delay = REFRESH_RETRY_BASE_DELAY_MS * Math.pow(2, Math.max(0, retryCount - 1));
@@ -28,26 +29,19 @@ function getApiUrl() {
     return process.env.INTERNAL_API_URL || process.env.NEXT_PUBLIC_API_URL || "";
 }
 
-async function fetchWithTimeout(url: string, options: RequestInit = {}, timeoutMs = BACKEND_REQUEST_TIMEOUT_MS) {
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), timeoutMs);
+function getProviders(): AuthProvider[] {
+    const providers: AuthProvider[] = [];
 
-    try {
-        return await fetch(url, {
-            ...options,
-            signal: controller.signal,
-        });
-    } finally {
-        clearTimeout(timeout);
+    if (process.env.AUTH_GOOGLE_ID && process.env.AUTH_GOOGLE_SECRET) {
+        providers.push(
+            Google({
+                clientId: process.env.AUTH_GOOGLE_ID,
+                clientSecret: process.env.AUTH_GOOGLE_SECRET,
+            })
+        );
     }
-}
 
-export const { handlers, auth, signIn, signOut } = NextAuth({
-    providers: [
-        Google({
-            clientId: process.env.AUTH_GOOGLE_ID,
-            clientSecret: process.env.AUTH_GOOGLE_SECRET,
-        }),
+    providers.push(
         Credentials({
             name: "Credentials",
             credentials: {
@@ -101,8 +95,28 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
                     return null;
                 }
             }
-        }),
-    ],
+        })
+    );
+
+    return providers;
+}
+
+async function fetchWithTimeout(url: string, options: RequestInit = {}, timeoutMs = BACKEND_REQUEST_TIMEOUT_MS) {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), timeoutMs);
+
+    try {
+        return await fetch(url, {
+            ...options,
+            signal: controller.signal,
+        });
+    } finally {
+        clearTimeout(timeout);
+    }
+}
+
+export const { handlers, auth, signIn, signOut } = NextAuth({
+    providers: getProviders(),
     pages: {
         signIn: "/login",
         error: "/login",
