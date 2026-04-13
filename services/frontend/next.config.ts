@@ -1,11 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  turbopack: {
-    root: __dirname,
-  },
-  // Configuración para Netlify - NO usar output: 'export'
-  // El plugin @netlify/plugin-nextjs maneja el deploy
   images: {
     unoptimized: true,
   },
