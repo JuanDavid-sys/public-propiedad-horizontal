@@ -1,6 +1,14 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import { getToken } from 'next-auth/jwt';
+import type { BackendTokensLike } from '@/types/auth';
+
+interface JWToken {
+    backendTokens?: BackendTokensLike;
+    accessTokenExpires?: number;
+    error?: string;
+    sub?: string;
+}
 
 // Rutas públicas que no requieren autenticación
 const publicRoutes = ['/', '/login', '/register'];
@@ -23,7 +31,7 @@ export default async function middleware(request: NextRequest) {
     let isAuthenticated = false;
     let hasRefreshError = false;
     try {
-        const token = await getToken({ req: request, secret: process.env.AUTH_SECRET });
+        const token = await getToken({ req: request, secret: process.env.AUTH_SECRET }) as JWToken | null;
         hasRefreshError = token?.error === 'RefreshAccessTokenError';
         isAuthenticated = !!token?.backendTokens?.user && !hasRefreshError;
     } catch (error) {
