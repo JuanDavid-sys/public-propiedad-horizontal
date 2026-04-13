@@ -31,9 +31,14 @@ export default async function middleware(request: NextRequest) {
     let isAuthenticated = false;
     let hasRefreshError = false;
     try {
-        const token = await getToken({ req: request, secret: process.env.AUTH_SECRET }) as JWToken | null;
-        hasRefreshError = token?.error === 'RefreshAccessTokenError';
-        isAuthenticated = !!token?.backendTokens?.user && !hasRefreshError;
+        const secret = process.env.AUTH_SECRET || process.env.NEXTAUTH_SECRET;
+        if (!secret) {
+            console.warn('AUTH_SECRET not set, skipping token validation');
+        } else {
+            const token = await getToken({ req: request, secret }) as JWToken | null;
+            hasRefreshError = token?.error === 'RefreshAccessTokenError';
+            isAuthenticated = !!token?.backendTokens?.user && !hasRefreshError;
+        }
     } catch (error) {
         console.error('Middleware auth error:', error);
         isAuthenticated = false;
