@@ -1,4 +1,4 @@
-import type { UnitDocument } from '@/lib/actions/unit.actions';
+import type { UnitDocument } from '@/lib/actions/base.actions';
 
 export type PersonItem = {
     document_number: string;
