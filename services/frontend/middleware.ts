@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import { auth } from '@/auth';
-import type { AppSessionLike } from '@/types/auth';
+import { getToken } from 'next-auth/jwt';
 
 // Rutas públicas que no requieren autenticación
 const publicRoutes = ['/', '/login', '/register'];
@@ -20,12 +19,13 @@ function matchesRoute(pathname: string, route: string) {
 export default async function middleware(request: NextRequest) {
     const { pathname } = request.nextUrl;
 
-    // Obtener la sesión del usuario de forma segura para evitar crash en runtimes serverless
+    // Obtener el token JWT de la cookie - compatible con Edge Runtime
     let isAuthenticated = false;
+    let hasRefreshError = false;
     try {
-        const session = await auth() as AppSessionLike | null;
-        const hasRefreshError = session?.error === 'RefreshAccessTokenError';
-        isAuthenticated = !!session?.user && !hasRefreshError;
+        const token = await getToken({ req: request, secret: process.env.AUTH_SECRET });
+        hasRefreshError = token?.error === 'RefreshAccessTokenError';
+        isAuthenticated = !!token?.backendTokens?.user && !hasRefreshError;
     } catch (error) {
         console.error('Middleware auth error:', error);
         isAuthenticated = false;
