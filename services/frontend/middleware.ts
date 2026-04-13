@@ -1,13 +1,12 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import { getToken } from 'next-auth/jwt';
-import type { BackendTokensLike } from '@/types/auth';
 
 interface JWToken {
-    backendTokens?: BackendTokensLike;
-    accessTokenExpires?: number;
+    backendTokens?: {
+        user?: { id?: string };
+    };
     error?: string;
-    sub?: string;
 }
 
 // Rutas públicas que no requieren autenticación
@@ -32,15 +31,12 @@ export default async function middleware(request: NextRequest) {
     let hasRefreshError = false;
     try {
         const secret = process.env.AUTH_SECRET || process.env.NEXTAUTH_SECRET;
-        if (!secret) {
-            console.warn('AUTH_SECRET not set, skipping token validation');
-        } else {
+        if (secret) {
             const token = await getToken({ req: request, secret }) as JWToken | null;
             hasRefreshError = token?.error === 'RefreshAccessTokenError';
             isAuthenticated = !!token?.backendTokens?.user && !hasRefreshError;
         }
-    } catch (error) {
-        console.error('Middleware auth error:', error);
+    } catch {
         isAuthenticated = false;
     }
 
