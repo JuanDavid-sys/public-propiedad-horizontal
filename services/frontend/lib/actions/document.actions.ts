@@ -8,7 +8,7 @@ import { MOCK_UNITS } from '../constants/directory.mocks';
 export async function fetchUnitDocuments(unitId: string): Promise<UnitDocument[]> {
     try {
         if (process.env.NEXT_PUBLIC_USE_MOCKS === 'true') {
-            const cache = await getDiskMockCache();
+            const cache = await getDiskMockCache() as any;
             const [tower, unit_number] = unitId.split('-');
             const unit = MOCK_UNITS.find((u: any) => String(u.tower) === tower && String(u.unit_number) === unit_number) as any;
             const baseDocs = unit?.documents || [];
@@ -50,7 +50,7 @@ export async function uploadUnitDocument(unitId: string, formData: FormData): Pr
             };
             
             // Persistir en DISCO
-            const cache = await getDiskMockCache();
+            const cache = await getDiskMockCache() as any;
             const currentUnitCache = cache[unitId] || {};
             const [tower, unit_number] = unitId.split('-');
             const originalUnit = MOCK_UNITS.find((u: any) => String(u.tower) === tower && String(u.unit_number) === unit_number) as any;
@@ -91,7 +91,7 @@ export async function uploadUnitDocument(unitId: string, formData: FormData): Pr
 export async function deleteUnitDocument(unitId: string, documentId: number): Promise<{ success: boolean; error?: string }> {
     try {
         if (process.env.NEXT_PUBLIC_USE_MOCKS === 'true') {
-            const cache = await getDiskMockCache();
+            const cache = await getDiskMockCache() as any;
             if (cache[unitId]?.documents) {
                 const updatedDocs = cache[unitId].documents.filter((d: any) => d.id !== documentId);
                 await updateMockCache(unitId, { documents: updatedDocs });
