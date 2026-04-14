@@ -70,8 +70,8 @@ export default function HomePage() {
     }).length;
     const emptyCount = totalUnits - occupiedCount;
     const occupancyRate = totalUnits > 0 ? Math.round((occupiedCount / totalUnits) * 100) : 0;
-    const towers = Array.from(new Set(data.map(item => item.unit?.split('-')[0]).filter(Boolean))).sort((a, b) => Number(a) - Number(b));
-    const allStatuses = Array.from(new Set(data.map(item => item.status).filter(Boolean))).sort();
+    const towers = Array.from(new Set(data.map(item => item.unit?.split('-')[0]).filter((t): t is string => !!t))).sort((a, b) => Number(a) - Number(b));
+    const allStatuses = Array.from(new Set(data.map(item => item.status).filter((s): s is string => !!s))).sort();
 
     const kpis = [
         {

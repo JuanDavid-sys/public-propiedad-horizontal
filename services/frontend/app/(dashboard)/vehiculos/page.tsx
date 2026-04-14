@@ -18,7 +18,7 @@ export default function VehiculosPage() {
     const { vehiculoSearch, setVehiculoSearch, vehiculoTower, setVehiculoTower } = useDirectoryStore();
 
     // Obtener torres únicas para el filtro
-    const towers = Array.from(new Set(vehiculos.map(v => v.tower).filter(Boolean))).sort();
+    const towers = Array.from(new Set(vehiculos.map(v => v.tower).filter((t): t is string => !!t))).sort();
 
     const [currentPage, setCurrentPage] = React.useState(1);
     const pageSize = 50;
