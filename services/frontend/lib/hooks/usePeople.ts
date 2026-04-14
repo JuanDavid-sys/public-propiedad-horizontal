@@ -9,8 +9,8 @@ import {
     updatePersonInStorage,
     deletePersonFromStorage,
     resetPeopleData,
-} from './people.client.actions';
-import { PersonData, PersonUpdatePayload } from './people.actions';
+} from '../actions/people.client.actions';
+import { PersonData, PersonUpdatePayload } from '../actions/people.actions';
 
 export function usePeople() {
     const [people, setPeople] = useState<PersonData[]>([]);
