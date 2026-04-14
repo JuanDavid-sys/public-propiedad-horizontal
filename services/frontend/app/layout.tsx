@@ -29,6 +29,7 @@ export const metadata: Metadata = {
 
 import QueryProvider from "@/providers/QueryProvider";
 import SessionProvider from "@/providers/SessionProvider";
+import { DemoDataProvider } from "@/providers/DemoDataProvider";
 import { OptimisticNavigationProvider } from "./_contexts/OptimisticNavigationContext";
 
 export default function RootLayout({
@@ -43,9 +44,11 @@ export default function RootLayout({
       >
         <SessionProvider>
           <QueryProvider>
-            <OptimisticNavigationProvider>
-              {children}
-            </OptimisticNavigationProvider>
+            <DemoDataProvider>
+              <OptimisticNavigationProvider>
+                {children}
+              </OptimisticNavigationProvider>
+            </DemoDataProvider>
           </QueryProvider>
         </SessionProvider>
       </body>

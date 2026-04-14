@@ -18,25 +18,26 @@ import {
     Construction, MessageSquare
 } from 'lucide-react';
 import {
-    fetchUnitDetail, updateUnitData,
-    assignPersonToUnit, unassignPersonFromUnit
-} from '@/lib/actions/unit.actions';
+    updateUnitData,
+    assignPersonToUnit, unassignPersonFromUnit,
+    fetchUnitDetail
+} from '@/lib/actions/smart.actions';
 import {
     assignVehicleToUnit, unassignVehicleFromUnit,
     updateVehicleData
-} from '@/lib/actions/vehicle.actions';
+} from '@/lib/actions/smart.actions';
 import {
     createPetForUnit, deletePet, updatePetData
-} from '@/lib/actions/pet.actions';
+} from '@/lib/actions/smart.actions';
 import {
     uploadUnitDocument, deleteUnitDocument
 } from '@/lib/actions/document.actions';
 import {
     assignParkingToUnit, unassignParkingFromUnit
-} from '@/lib/actions/parking.actions';
+} from '@/lib/actions/smart.actions';
 import { UnitDocument } from '@/lib/actions/base.actions';
 import { usePeopleData } from '@/lib/hooks/usePeopleData';
-import { fetchPersonByDocument, createPerson, updatePersonData } from '@/lib/actions/people.actions';
+import { fetchPersonByDocument, createPerson, updatePersonData } from '@/lib/actions/smart.actions';
 import { PersonFormModal } from '../../_components/modals/PersonFormModal';
 import { PetFormModal } from '../../_components/modals/PetFormModal';
 import { VehicleFormModal } from '../../_components/modals/VehicleFormModal';

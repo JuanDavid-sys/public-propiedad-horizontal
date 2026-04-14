@@ -91,6 +91,7 @@ export async function fetchPetById(petId: number): Promise<PetData | null> {
 export async function createPetForUnit(unitId: string, petData: any): Promise<{ success: boolean; error?: string }> {
     try {
         if (process.env.NEXT_PUBLIC_USE_MOCKS === 'true') {
+            // En modo demo, los datos se manejan directamente en localStorage desde el cliente
             return { success: true };
         }
         const apiUrl = process.env.INTERNAL_API_URL || 'http://localhost:8000/api';
@@ -115,6 +116,7 @@ export async function createPetForUnit(unitId: string, petData: any): Promise<{ 
 export async function updatePetData(petId: number, petData: any): Promise<{ success: boolean; error?: string }> {
     try {
         if (process.env.NEXT_PUBLIC_USE_MOCKS === 'true') {
+            // En modo demo, los datos se manejan directamente en localStorage desde el cliente
             return { success: true };
         }
         const apiUrl = process.env.INTERNAL_API_URL || 'http://localhost:8000/api';
@@ -137,6 +139,7 @@ export async function updatePetData(petId: number, petData: any): Promise<{ succ
 export async function deletePet(petId: number): Promise<{ success: boolean; error?: string }> {
     try {
         if (process.env.NEXT_PUBLIC_USE_MOCKS === 'true') {
+            // En modo demo, los datos se manejan directamente en localStorage desde el cliente
             return { success: true };
         }
         const apiUrl = process.env.INTERNAL_API_URL || 'http://localhost:8000/api';

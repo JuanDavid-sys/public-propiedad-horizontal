@@ -1,42 +1,21 @@
 'use server';
 
 import { revalidatePath } from 'next/cache';
-import fs from 'fs';
 import { MOCK_UNITS } from '../constants/directory.mocks';
 import { getAuthHeader, UnitData } from './base.actions';
 
-// PERSISTENCIA EN DISCO PARA MOCKS (Inmune a recargas de servidor)
-const CACHE_FILE = '/tmp/unit_mock_cache.json';
-
-function loadMockCache(): Record<string, any> {
-    try {
-        if (fs.existsSync(CACHE_FILE)) {
-            const data = fs.readFileSync(CACHE_FILE, 'utf-8');
-            return JSON.parse(data);
-        }
-    } catch (e) {
-        console.error('Error loading mock cache from disk:', e);
-    }
-    return {};
-}
-
-function saveMockCache(cache: Record<string, any>) {
-    try {
-        fs.writeFileSync(CACHE_FILE, JSON.stringify(cache, null, 2));
-    } catch (e) {
-        console.error('Error saving mock cache to disk:', e);
-    }
-}
+// NOTA: En modo demo (NEXT_PUBLIC_USE_MOCKS=true), los datos se manejan
+// directamente en localStorage desde el cliente mediante LocalStorageService.
+// Las server actions no pueden acceder a localStorage, por lo que en modo demo
+// retornan éxito y el cliente actualiza localStorage directamente.
 
 export async function fetchDirectoryData(): Promise<UnitData[]> {
     try {
         if (process.env.NEXT_PUBLIC_USE_MOCKS === 'true') {
-            const MOCK_CACHE = loadMockCache();
-            const rawData = MOCK_UNITS.map(u => {
-                const key = `${u.tower}-${u.unit_number}`;
-                return MOCK_CACHE[key] ? { ...u, ...MOCK_CACHE[key] } : u;
-            });
-            
+            // En modo demo, retornamos los datos de los mocks.
+            // El cliente leerá los datos actualizados desde localStorage.
+            const rawData = MOCK_UNITS;
+
             return (rawData as any[]).map((item: any, index: number) => ({
                 id: index + 1,
                 unit: `${item.tower}-${item.unit_number}`,
@@ -99,16 +78,11 @@ export async function fetchUnitDetail(tower: string, unitNumber: string): Promis
     try {
         let rawData;
         if (process.env.NEXT_PUBLIC_USE_MOCKS === 'true') {
-            const MOCK_CACHE = loadMockCache();
-            const key = `${tower}-${unitNumber}`;
+            // En modo demo, retornamos los datos del mock.
+            // El cliente leerá los datos actualizados desde localStorage.
             const baseUnit = MOCK_UNITS.find(u => String(u.tower) === tower && String(u.unit_number) === unitNumber);
             if (!baseUnit) return null;
-            
-            const cachedData = MOCK_CACHE[key] || {};
-            rawData = { ...baseUnit, ...cachedData };
-            
-            // Priorizar arreglos de la cache
-            if (cachedData.documents) rawData.documents = cachedData.documents;
+            rawData = baseUnit;
         } else {
             const apiUrl = process.env.INTERNAL_API_URL || 'http://localhost:8000/api';
             const authHeader = await getAuthHeader();
@@ -144,12 +118,7 @@ export async function fetchUnitDetail(tower: string, unitNumber: string): Promis
 export async function updateUnitData(unitId: string, updatedData: any): Promise<{ success: boolean; error?: string }> {
     try {
         if (process.env.NEXT_PUBLIC_USE_MOCKS === 'true') {
-            const cache = loadMockCache();
-            cache[unitId] = { ...(cache[unitId] || {}), ...updatedData };
-            saveMockCache(cache);
-            
-            revalidatePath('/apartamentos');
-            revalidatePath(`/apartamentos/${unitId}`);
+            // En modo demo, los datos se manejan directamente en localStorage desde el cliente
             return { success: true };
         }
         
@@ -175,7 +144,7 @@ export async function updateUnitData(unitId: string, updatedData: any): Promise<
 
 export async function assignPersonToUnit(unitId: string, personData: any): Promise<{ success: boolean; error?: string }> {
     if (process.env.NEXT_PUBLIC_USE_MOCKS === 'true') {
-        // En un sistema real de mocks podríamos persistir personas también en el JSON
+        // En modo demo, los datos se manejan directamente en localStorage desde el cliente
         return { success: true };
     }
     // ... resto de la lógica original de API
@@ -183,19 +152,20 @@ export async function assignPersonToUnit(unitId: string, personData: any): Promi
 }
 
 export async function unassignPersonFromUnit(unitId: string, documentNumber: string): Promise<{ success: boolean; error?: string }> {
-    if (process.env.NEXT_PUBLIC_USE_MOCKS === 'true') return { success: true };
+    if (process.env.NEXT_PUBLIC_USE_MOCKS === 'true') {
+        // En modo demo, los datos se manejan directamente en localStorage desde el cliente
+        return { success: true };
+    }
     return { success: true };
 }
 
-// Exportar para otros módulos
+// Funciones de compatibilidad (obsoletas, mantenidas por si hay código legacy)
 export async function updateMockCache(unitId: string, data: any) {
-    if (process.env.NEXT_PUBLIC_USE_MOCKS === 'true') {
-        const cache = loadMockCache();
-        cache[unitId] = { ...(cache[unitId] || {}), ...data };
-        saveMockCache(cache);
-    }
+    // En modo demo actual, esto no hace nada porque los datos están en localStorage del cliente
+    console.log('[Demo] updateMockCache called (obsolete):', unitId, data);
 }
 
 export async function getDiskMockCache() {
-    return loadMockCache();
+    // Retorna objeto vacío ya que los datos ahora están en localStorage del cliente
+    return {};
 }

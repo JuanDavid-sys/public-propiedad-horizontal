@@ -8,12 +8,12 @@ import {
     ParkingSquare, Info, Edit, Trash2
 } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
-import {
-    deleteVehicleByPlate,
-    fetchVehicleByUnitAndPlate,
-    fetchVehicleDetailByPlate,
-    unassignVehicleFromUnit
-} from '@/lib/actions/vehicle.actions';
+import { 
+    deleteVehicleByPlate, 
+    fetchVehicleByUnitAndPlate, 
+    fetchVehicleByPlate as fetchVehicleDetailByPlate,
+    unassignVehicleFromUnit 
+} from '@/lib/actions/smart.actions';
 import { VehicleData } from '@/lib/actions/base.actions';
 import { DetailSection, DetailItem } from '../apartamentos/_components/DetailComponents';
 import { Breadcrumbs, BreadcrumbItem } from '../apartamentos/_components/Breadcrumbs';

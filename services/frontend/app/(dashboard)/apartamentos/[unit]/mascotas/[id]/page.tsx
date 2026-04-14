@@ -9,7 +9,7 @@ import { Modal } from '@/components/ui/Modal';
 import { DetailSection, DetailItem } from '../../../_components/DetailComponents';
 import { Breadcrumbs, BreadcrumbItem } from '../../../_components/Breadcrumbs';
 import { CenteredDetailSkeleton } from '@/components/skeletons/PageSkeletons';
-import { fetchPetById, deletePet } from '@/lib/actions/pet.actions';
+import { fetchPetById, deletePet } from '@/lib/actions/smart.actions';
 import { PetData } from '@/lib/actions/base.actions';
 
 function PetDetailPageContent({ paramsPromise }: { paramsPromise: Promise<any> }) {

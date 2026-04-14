@@ -1,11 +1,14 @@
+'use client';
+
 import { useQuery } from '@tanstack/react-query';
-import { fetchPetsData } from '@/lib/actions/pet.actions';
+import { fetchPetsData } from '@/lib/actions/smart.actions';
 
 export function usePetsData() {
     return useQuery({
         queryKey: ['petsData'],
         queryFn: () => fetchPetsData(),
-        staleTime: 5 * 60 * 1000, 
+        staleTime: 5 * 60 * 1000,
         gcTime: 30 * 60 * 1000,
+        refetchOnWindowFocus: false,
     });
 }

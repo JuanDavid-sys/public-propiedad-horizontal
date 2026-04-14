@@ -1,5 +1,7 @@
+'use client';
+
 import { useQuery } from '@tanstack/react-query';
-import { fetchDirectoryData } from '@/lib/actions/unit.actions';
+import { fetchDirectoryData } from '@/lib/actions/smart.actions';
 
 export function useDirectoryData() {
     return useQuery({

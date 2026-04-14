@@ -9,7 +9,7 @@ import { Input } from '@/components/ui/Input';
 import { Label } from '@/components/ui/Label';
 import { Select } from '@/components/ui/Select';
 import { Textarea } from '@/components/ui/Textarea';
-import { fetchPetById, updatePetData } from '@/lib/actions/pet.actions';
+import { fetchPetById, updatePetData } from '@/lib/actions/smart.actions';
 import { Breadcrumbs, BreadcrumbItem } from '../apartamentos/_components/Breadcrumbs';
 import { PetEditSkeleton } from '@/components/skeletons/PageSkeletons';
 

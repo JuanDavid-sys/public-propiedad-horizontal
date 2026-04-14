@@ -39,8 +39,7 @@ export async function fetchParkingData(type?: string): Promise<any[]> {
 export async function assignParkingToUnit(unitId: string, parkingId: number): Promise<{ success: boolean; error?: string }> {
     try {
         if (process.env.NEXT_PUBLIC_USE_MOCKS === 'true') {
-            revalidatePath(`/apartamentos/${unitId}`);
-            revalidatePath('/parqueaderos');
+            // En modo demo, los datos se manejan directamente en localStorage desde el cliente
             return { success: true };
         }
         const apiUrl = process.env.INTERNAL_API_URL || 'http://localhost:8000/api';
@@ -59,8 +58,7 @@ export async function assignParkingToUnit(unitId: string, parkingId: number): Pr
 export async function unassignParkingFromUnit(unitId: string, parkingId: number): Promise<{ success: boolean; error?: string }> {
     try {
         if (process.env.NEXT_PUBLIC_USE_MOCKS === 'true') {
-            revalidatePath(`/apartamentos/${unitId}`);
-            revalidatePath('/parqueaderos');
+            // En modo demo, los datos se manejan directamente en localStorage desde el cliente
             return { success: true };
         }
         const apiUrl = process.env.INTERNAL_API_URL || 'http://localhost:8000/api';

@@ -12,7 +12,7 @@ import {
     Wallet, CreditCard, ArrowUpRight, Receipt, DollarSign
 } from 'lucide-react';
 import { useOptimisticNavigation } from '@/app/_contexts/OptimisticNavigationContext';
-import { fetchUnitDetail } from '@/lib/actions/unit.actions';
+import { fetchUnitDetail } from '@/lib/actions/smart.actions';
 import { StatusBadge } from '../_components/StatusBadge';
 import { UnitIntegrityAlert } from '../_components/UnitIntegrityAlert';
 import { UnitTabs } from '../_components/UnitTabs';

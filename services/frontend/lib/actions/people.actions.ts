@@ -186,6 +186,7 @@ export async function fetchPersonByDocument(documentNumber: string): Promise<Per
 export async function updatePersonData(documentNumber: string, updatedData: PersonUpdatePayload): Promise<{ success: boolean; error?: string }> {
     try {
         if (process.env.NEXT_PUBLIC_USE_MOCKS === 'true') {
+            // En modo demo, los datos se manejan directamente en localStorage desde el cliente
             return { success: true };
         }
         const apiUrl = process.env.INTERNAL_API_URL || 'http://localhost:8000/api';
@@ -219,6 +220,9 @@ export async function updatePersonData(documentNumber: string, updatedData: Pers
 export async function createPerson(personData: any): Promise<{ success: boolean; error?: string }> {
     try {
         if (process.env.NEXT_PUBLIC_USE_MOCKS === 'true') {
+            // En modo demo, los datos se manejan directamente en localStorage desde el cliente
+            // Las server actions no pueden acceder a localStorage, así que retornamos éxito
+            // y el cliente actualiza localStorage mediante LocalStorageService
             return { success: true };
         }
         const apiUrl = process.env.INTERNAL_API_URL || 'http://localhost:8000/api';
@@ -252,6 +256,7 @@ export async function createPerson(personData: any): Promise<{ success: boolean;
 export async function deletePerson(documentNumber: string): Promise<{ success: boolean; error?: string }> {
     try {
         if (process.env.NEXT_PUBLIC_USE_MOCKS === 'true') {
+            // En modo demo, los datos se manejan directamente en localStorage desde el cliente
             return { success: true };
         }
         const apiUrl = process.env.INTERNAL_API_URL || 'http://localhost:8000/api';

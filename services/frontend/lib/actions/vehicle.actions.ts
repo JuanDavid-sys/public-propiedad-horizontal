@@ -176,6 +176,7 @@ export async function fetchVehicleByUnitAndPlate(unitId: string, plate: string):
 export async function assignVehicleToUnit(unitId: string, vehicleData: any): Promise<{ success: boolean; error?: string }> {
     try {
         if (process.env.NEXT_PUBLIC_USE_MOCKS === 'true') {
+            // En modo demo, los datos se manejan directamente en localStorage desde el cliente
             return { success: true };
         }
         const apiUrl = process.env.INTERNAL_API_URL || 'http://localhost:8000/api';
@@ -199,6 +200,7 @@ export async function assignVehicleToUnit(unitId: string, vehicleData: any): Pro
 export async function unassignVehicleFromUnit(unitId: string, plate: string): Promise<{ success: boolean; error?: string }> {
     try {
         if (process.env.NEXT_PUBLIC_USE_MOCKS === 'true') {
+            // En modo demo, los datos se manejan directamente en localStorage desde el cliente
             return { success: true };
         }
         const apiUrl = process.env.INTERNAL_API_URL || 'http://localhost:8000/api';
@@ -221,6 +223,7 @@ export async function unassignVehicleFromUnit(unitId: string, plate: string): Pr
 export async function deleteVehicleByPlate(plate: string): Promise<{ success: boolean; error?: string }> {
     try {
         if (process.env.NEXT_PUBLIC_USE_MOCKS === 'true') {
+            // En modo demo, los datos se manejan directamente en localStorage desde el cliente
             return { success: true };
         }
         const apiUrl = process.env.INTERNAL_API_URL || 'http://localhost:8000/api';
@@ -241,6 +244,7 @@ export async function deleteVehicleByPlate(plate: string): Promise<{ success: bo
 export async function updateVehicleData(unitId: string, plate: string, updatedData: any): Promise<{ success: boolean; error?: string }> {
     try {
         if (process.env.NEXT_PUBLIC_USE_MOCKS === 'true') {
+            // En modo demo, los datos se manejan directamente en localStorage desde el cliente
             return { success: true };
         }
         const apiUrl = process.env.INTERNAL_API_URL || 'http://localhost:8000/api';

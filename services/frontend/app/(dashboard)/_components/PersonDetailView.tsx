@@ -10,7 +10,8 @@ import {
 } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { Modal } from '@/components/ui/Modal';
-import { fetchPersonByDocument, deletePerson, PersonData } from '@/lib/actions/people.actions';
+import { fetchPersonByDocument, deletePerson } from '@/lib/actions/smart.actions';
+import { PersonData } from '@/lib/actions/people.actions';
 import { DetailSection, DetailItem } from '../apartamentos/_components/DetailComponents';
 import { Breadcrumbs, BreadcrumbItem } from '../apartamentos/_components/Breadcrumbs';
 import { PersonDetailSkeleton } from '@/components/skeletons/PageSkeletons';
